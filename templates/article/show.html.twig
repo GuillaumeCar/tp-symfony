@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+
+                <h2 class="section-heading">{{ article.title }}</h2>
+                <img src="{{ asset(article.image) }}" class="img-thumbnail">
+                <h3 class="section-heading">{{ article.subtitle }}</h3>
+
+                <p>{{ article.body }}</p>
+
+                <p>Article rédigé par {{ article.author }} le {{ article.createdAt | date('Y-m-d') }}. <br>Photographs by
+                    <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+            </div>
+        </div>
+    </div>
+</article>
+
+    <hr>
+
+{% endblock %}
+
+

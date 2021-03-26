@@ -1,124 +1,126 @@
 <?php
 
-
 namespace App\Entity;
 
+use App\Repository\ArticleRepository;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ */
 class Article
 {
-    /** @var string */
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $title;
 
-    /** @var string */
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $subtitle;
 
-    /** @var \DateTime */
-    private $createdAt;
-
-    /** @var string */
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $author;
 
-    /** @var string */
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $body;
 
-    /** @var string */
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $image;
 
     /**
-     * @return string
+     * @ORM\Column(type="datetime")
      */
-    public function getTitle(): string
+    private $createdAt;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title): void
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getSubtitle(): string
+    public function getSubtitle(): ?string
     {
         return $this->subtitle;
     }
 
-    /**
-     * @param string $subtitle
-     */
-    public function setSubtitle(string $subtitle): void
+    public function setSubtitle(?string $subtitle): self
     {
         $this->subtitle = $subtitle;
+
+        return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt(): \DateTime
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @param \DateTime $createdAt
-     */
-    public function setCreatedAt(\DateTime $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAuthor(): string
+    public function getAuthor(): ?string
     {
         return $this->author;
     }
 
-    /**
-     * @param string $author
-     */
-    public function setAuthor(string $author): void
+    public function setAuthor(string $author): self
     {
         $this->author = $author;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getBody(): string
+    public function getBody(): ?string
     {
         return $this->body;
     }
 
-    /**
-     * @param string $body
-     */
-    public function setBody(string $body): void
+    public function setBody(string $body): self
     {
         $this->body = $body;
+
+        return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getImage(): string
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
-    /**
-     * @param string $image
-     */
-    public function setImage(string $image): void
+    public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
     }
 
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
 
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
 }
